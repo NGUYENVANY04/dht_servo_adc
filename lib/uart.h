@@ -15,5 +15,5 @@ typedef struct
 #define USART2 ((USART_t *)(USART2_ADDRESS))
 #define USART3 ((USART_t *)(USART3_ADDRESS))
 void init_uart(void);
-void sent_uart(uint8_t data);
+void sent_uart(void);
 #endif

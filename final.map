@@ -26,6 +26,7 @@ LOAD lib/rcc.o
 LOAD lib/gpio.o
 LOAD src/main.o
 LOAD lib/systick.o
+LOAD src/drivers/log_info.o
 LOAD src/drivers/dht.o
 LOAD lib/uart.o
 LOAD Startup/startup.o
@@ -41,7 +42,7 @@ LOAD lib/syscall.o
                 0x0000000008000000                vectors
                 0x0000000008000130                . = ALIGN (0x4)
 
-.text           0x0000000008000130      0x72c
+.text           0x0000000008000130      0x7f4
                 0x0000000008000130                . = ALIGN (0x4)
  *(.text)
  .text          0x0000000008000130       0xb8 lib/rcc.o
@@ -54,183 +55,188 @@ LOAD lib/syscall.o
                 0x00000000080002dc                gpio_get_level
                 0x0000000008000304                gpio_toggle_level
  *fill*         0x000000000800032a        0x2 
- .text          0x000000000800032c       0x64 src/main.o
+ .text          0x000000000800032c       0x58 src/main.o
                 0x000000000800032c                main
- .text          0x0000000008000390       0x58 lib/systick.o
-                0x0000000008000390                SysTick_Init
-                0x00000000080003b4                delay_us
- .text          0x00000000080003e8      0x128 src/drivers/dht.o
-                0x00000000080003e8                start_signal
-                0x00000000080004a8                read_signal
- .text          0x0000000008000510       0x7c lib/uart.o
-                0x0000000008000510                init_uart
-                0x000000000800055c                sent_uart
- .text          0x000000000800058c       0x64 Startup/startup.o
-                0x000000000800058c                Reset_Handler
-                0x00000000080005e8                DMA1_Channel1_handle
-                0x00000000080005e8                SPI2_handle
-                0x00000000080005e8                TIM1_UP_handle
-                0x00000000080005e8                EXTI3_handle
-                0x00000000080005e8                TIM7_handle
-                0x00000000080005e8                TIM1_BRK_handle
-                0x00000000080005e8                ADC3_handle
-                0x00000000080005e8                USART3_handle
-                0x00000000080005e8                CAN_RX1_handle
-                0x00000000080005e8                RTCAlarm_handle
-                0x00000000080005e8                EXTI4_handle
-                0x00000000080005e8                PVD_handle
-                0x00000000080005e8                UART4_handle
-                0x00000000080005e8                FLASH_handle
-                0x00000000080005e8                DMA2_Channel2_handle
-                0x00000000080005e8                I2C1_ER_handle
-                0x00000000080005e8                DMA1_Channel5_handle
-                0x00000000080005e8                USART2_handle
-                0x00000000080005e8                EXTI2_handle
-                0x00000000080005e8                EXTI1_handle
-                0x00000000080005e8                TIM2_handle
-                0x00000000080005e8                DMA1_Channel6_handle
-                0x00000000080005e8                HardFault_handle
-                0x00000000080005e8                SysTick_handle
-                0x00000000080005e8                TIM1_TRG_COM_handle
-                0x00000000080005e8                USB_HP_CAN_TX_handle
-                0x00000000080005e8                CAN_SCE_handle
-                0x00000000080005e8                DMA2_Channel4_5_handle
-                0x00000000080005e8                FSMC_handle
-                0x00000000080005e8                EXTI15_10_handle
-                0x00000000080005e8                EXTI0_handle
-                0x00000000080005e8                USBWakeUp_handle
-                0x00000000080005e8                TIM6_handle
-                0x00000000080005e8                TIM5_handle
-                0x00000000080005e8                RTC_handle
-                0x00000000080005e8                TIM3_handle
-                0x00000000080005e8                EXTI9_5_handle
-                0x00000000080005e8                DMA2_Channel1_handle
-                0x00000000080005e8                TIM8_CC_handle
-                0x00000000080005e8                SPI1_handle
-                0x00000000080005e8                DMA1_Channel4_handle
-                0x00000000080005e8                I2C1_EV_handle
-                0x00000000080005e8                PendSV_handle
-                0x00000000080005e8                USART1_handle
-                0x00000000080005e8                Default_Handle
-                0x00000000080005e8                SDIO_handle
-                0x00000000080005e8                NMI_handle
-                0x00000000080005e8                UART5_handle
-                0x00000000080005e8                TIM1_CC_handle
-                0x00000000080005e8                BusFault_handle
-                0x00000000080005e8                SVCall_handle
-                0x00000000080005e8                DMA1_Channel3_handle
-                0x00000000080005e8                WWDG_handle
-                0x00000000080005e8                MemManage_handle
-                0x00000000080005e8                TIM8_UP_handle
-                0x00000000080005e8                DMA1_Channel2_handle
-                0x00000000080005e8                RCC_handle
-                0x00000000080005e8                TIM8_TRG_COM_handle
-                0x00000000080005e8                Debug_Monitor_handle
-                0x00000000080005e8                UsageFault_handle
-                0x00000000080005e8                DMA1_Channel7_handle
-                0x00000000080005e8                I2C2_EV_handle
-                0x00000000080005e8                TAMPER_handle
-                0x00000000080005e8                TIM8_BRK_handle
-                0x00000000080005e8                ADC1_2_handle
-                0x00000000080005e8                DMA2_Channel3_handle
-                0x00000000080005e8                TIM4_handle
-                0x00000000080005e8                SPI3_handle
-                0x00000000080005e8                I2C2_ER_handle
-                0x00000000080005e8                USB_LP_CAN_RX0_handle
- .text          0x00000000080005f0      0x25c lib/syscall.o
-                0x00000000080005f0                initialise_monitor_handles
-                0x00000000080005fc                _getpid
-                0x000000000800060a                _kill
-                0x000000000800062a                _exit
-                0x000000000800063e                _read
-                0x0000000008000678                _write
-                0x00000000080006b0                _close
-                0x00000000080006c6                _fstat
-                0x00000000080006e4                _isatty
-                0x00000000080006f8                _lseek
-                0x0000000008000710                _open
-                0x000000000800072a                _wait
-                0x0000000008000748                _unlink
-                0x0000000008000766                _times
-                0x000000000800077c                _stat
-                0x000000000800079a                _link
-                0x00000000080007ba                _fork
-                0x00000000080007d0                _execve
-                0x00000000080007f2                _sbrk
- .text          0x000000000800084c        0x0 /home/ynghia/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/libc.a(lib_a-errno.o)
- .text          0x000000000800084c        0x0 /home/ynghia/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/libc.a(lib_a-impure.o)
+ .text          0x0000000008000384       0x58 lib/systick.o
+                0x0000000008000384                SysTick_Init
+                0x00000000080003a8                delay_us
+ .text          0x00000000080003dc       0x2c src/drivers/log_info.o
+                0x00000000080003dc                log_info
+ .text          0x0000000008000408      0x1d8 src/drivers/dht.o
+                0x0000000008000408                start_signal
+                0x00000000080004c0                read_signal
+                0x000000000800052c                read_data
+ .text          0x00000000080005e0       0x74 lib/uart.o
+                0x00000000080005e0                init_uart
+                0x000000000800062c                sent_uart
+ .text          0x0000000008000654       0x64 Startup/startup.o
+                0x0000000008000654                Reset_Handler
+                0x00000000080006b0                DMA1_Channel1_handle
+                0x00000000080006b0                SPI2_handle
+                0x00000000080006b0                TIM1_UP_handle
+                0x00000000080006b0                EXTI3_handle
+                0x00000000080006b0                TIM7_handle
+                0x00000000080006b0                TIM1_BRK_handle
+                0x00000000080006b0                ADC3_handle
+                0x00000000080006b0                USART3_handle
+                0x00000000080006b0                CAN_RX1_handle
+                0x00000000080006b0                RTCAlarm_handle
+                0x00000000080006b0                EXTI4_handle
+                0x00000000080006b0                PVD_handle
+                0x00000000080006b0                UART4_handle
+                0x00000000080006b0                FLASH_handle
+                0x00000000080006b0                DMA2_Channel2_handle
+                0x00000000080006b0                I2C1_ER_handle
+                0x00000000080006b0                DMA1_Channel5_handle
+                0x00000000080006b0                USART2_handle
+                0x00000000080006b0                EXTI2_handle
+                0x00000000080006b0                EXTI1_handle
+                0x00000000080006b0                TIM2_handle
+                0x00000000080006b0                DMA1_Channel6_handle
+                0x00000000080006b0                HardFault_handle
+                0x00000000080006b0                SysTick_handle
+                0x00000000080006b0                TIM1_TRG_COM_handle
+                0x00000000080006b0                USB_HP_CAN_TX_handle
+                0x00000000080006b0                CAN_SCE_handle
+                0x00000000080006b0                DMA2_Channel4_5_handle
+                0x00000000080006b0                FSMC_handle
+                0x00000000080006b0                EXTI15_10_handle
+                0x00000000080006b0                EXTI0_handle
+                0x00000000080006b0                USBWakeUp_handle
+                0x00000000080006b0                TIM6_handle
+                0x00000000080006b0                TIM5_handle
+                0x00000000080006b0                RTC_handle
+                0x00000000080006b0                TIM3_handle
+                0x00000000080006b0                EXTI9_5_handle
+                0x00000000080006b0                DMA2_Channel1_handle
+                0x00000000080006b0                TIM8_CC_handle
+                0x00000000080006b0                SPI1_handle
+                0x00000000080006b0                DMA1_Channel4_handle
+                0x00000000080006b0                I2C1_EV_handle
+                0x00000000080006b0                PendSV_handle
+                0x00000000080006b0                USART1_handle
+                0x00000000080006b0                Default_Handle
+                0x00000000080006b0                SDIO_handle
+                0x00000000080006b0                NMI_handle
+                0x00000000080006b0                UART5_handle
+                0x00000000080006b0                TIM1_CC_handle
+                0x00000000080006b0                BusFault_handle
+                0x00000000080006b0                SVCall_handle
+                0x00000000080006b0                DMA1_Channel3_handle
+                0x00000000080006b0                WWDG_handle
+                0x00000000080006b0                MemManage_handle
+                0x00000000080006b0                TIM8_UP_handle
+                0x00000000080006b0                DMA1_Channel2_handle
+                0x00000000080006b0                RCC_handle
+                0x00000000080006b0                TIM8_TRG_COM_handle
+                0x00000000080006b0                Debug_Monitor_handle
+                0x00000000080006b0                UsageFault_handle
+                0x00000000080006b0                DMA1_Channel7_handle
+                0x00000000080006b0                I2C2_EV_handle
+                0x00000000080006b0                TAMPER_handle
+                0x00000000080006b0                TIM8_BRK_handle
+                0x00000000080006b0                ADC1_2_handle
+                0x00000000080006b0                DMA2_Channel3_handle
+                0x00000000080006b0                TIM4_handle
+                0x00000000080006b0                SPI3_handle
+                0x00000000080006b0                I2C2_ER_handle
+                0x00000000080006b0                USB_LP_CAN_RX0_handle
+ .text          0x00000000080006b8      0x25c lib/syscall.o
+                0x00000000080006b8                initialise_monitor_handles
+                0x00000000080006c4                _getpid
+                0x00000000080006d2                _kill
+                0x00000000080006f2                _exit
+                0x0000000008000706                _read
+                0x0000000008000740                _write
+                0x0000000008000778                _close
+                0x000000000800078e                _fstat
+                0x00000000080007ac                _isatty
+                0x00000000080007c0                _lseek
+                0x00000000080007d8                _open
+                0x00000000080007f2                _wait
+                0x0000000008000810                _unlink
+                0x000000000800082e                _times
+                0x0000000008000844                _stat
+                0x0000000008000862                _link
+                0x0000000008000882                _fork
+                0x0000000008000898                _execve
+                0x00000000080008ba                _sbrk
+ .text          0x0000000008000914        0x0 /home/ynghia/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/libc.a(lib_a-errno.o)
+ .text          0x0000000008000914        0x0 /home/ynghia/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/libc.a(lib_a-impure.o)
  *(.text*)
- .text.__errno  0x000000000800084c       0x10 /home/ynghia/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/libc.a(lib_a-errno.o)
-                0x000000000800084c                __errno
+ .text.__errno  0x0000000008000914       0x10 /home/ynghia/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/libc.a(lib_a-errno.o)
+                0x0000000008000914                __errno
  *(.glue_7)
- .glue_7        0x000000000800085c        0x0 linker stubs
+ .glue_7        0x0000000008000924        0x0 linker stubs
  *(.glue_7t)
- .glue_7t       0x000000000800085c        0x0 linker stubs
+ .glue_7t       0x0000000008000924        0x0 linker stubs
  *(.eh_frame)
  *(.init)
  *(.fini)
-                0x000000000800085c                . = ALIGN (0x4)
-                0x000000000800085c                _etext = .
+                0x0000000008000924                . = ALIGN (0x4)
+                0x0000000008000924                _etext = .
 
-.vfp11_veneer   0x000000000800085c        0x0
- .vfp11_veneer  0x000000000800085c        0x0 linker stubs
+.vfp11_veneer   0x0000000008000924        0x0
+ .vfp11_veneer  0x0000000008000924        0x0 linker stubs
 
-.v4_bx          0x000000000800085c        0x0
- .v4_bx         0x000000000800085c        0x0 linker stubs
+.v4_bx          0x0000000008000924        0x0
+ .v4_bx         0x0000000008000924        0x0 linker stubs
 
-.iplt           0x000000000800085c        0x0
- .iplt          0x000000000800085c        0x0 src/main.o
+.iplt           0x0000000008000924        0x0
+ .iplt          0x0000000008000924        0x0 src/main.o
 
-.rodata         0x000000000800085c       0x10
-                0x000000000800085c                . = ALIGN (0x4)
+.rodata         0x0000000008000924       0x18
+                0x0000000008000924                . = ALIGN (0x4)
  *(.rodata)
- .rodata        0x000000000800085c        0xc src/main.o
+ .rodata        0x0000000008000924        0xc src/main.o
+ .rodata        0x0000000008000930        0x5 src/drivers/dht.o
  *(.rodata*)
+ *fill*         0x0000000008000935        0x3 
  .rodata._global_impure_ptr
-                0x0000000008000868        0x4 /home/ynghia/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/libc.a(lib_a-impure.o)
-                0x0000000008000868                _global_impure_ptr
-                0x000000000800086c                . = ALIGN (0x4)
+                0x0000000008000938        0x4 /home/ynghia/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/libc.a(lib_a-impure.o)
+                0x0000000008000938                _global_impure_ptr
+                0x000000000800093c                . = ALIGN (0x4)
 
-.rel.dyn        0x000000000800086c        0x0
- .rel.iplt      0x000000000800086c        0x0 src/main.o
+.rel.dyn        0x000000000800093c        0x0
+ .rel.iplt      0x000000000800093c        0x0 src/main.o
 
-.ARM.extab      0x000000000800086c        0x0
-                0x000000000800086c                . = ALIGN (0x4)
+.ARM.extab      0x000000000800093c        0x0
+                0x000000000800093c                . = ALIGN (0x4)
  *(.ARM.extab* .gnu.linkonce.armextab.*)
-                0x000000000800086c                . = ALIGN (0x4)
+                0x000000000800093c                . = ALIGN (0x4)
 
-.ARM            0x000000000800086c        0x0
-                0x000000000800086c                . = ALIGN (0x4)
-                0x000000000800086c                __exidx_start = .
+.ARM            0x000000000800093c        0x0
+                0x000000000800093c                . = ALIGN (0x4)
+                0x000000000800093c                __exidx_start = .
  *(.ARM.exidx*)
-                0x000000000800086c                __exidx_end = .
-                0x000000000800086c                . = ALIGN (0x4)
+                0x000000000800093c                __exidx_end = .
+                0x000000000800093c                . = ALIGN (0x4)
 
-.preinit_array  0x000000000800086c        0x0
-                0x000000000800086c                . = ALIGN (0x4)
+.preinit_array  0x000000000800093c        0x0
+                0x000000000800093c                . = ALIGN (0x4)
                 [!provide]                        PROVIDE (__preinit_array_start = .)
  *(.preinit_array*)
                 [!provide]                        PROVIDE (__preinit_array_end = .)
-                0x000000000800086c                . = ALIGN (0x4)
+                0x000000000800093c                . = ALIGN (0x4)
 
-.init_array     0x000000000800086c        0x0
-                0x000000000800086c                . = ALIGN (0x4)
+.init_array     0x000000000800093c        0x0
+                0x000000000800093c                . = ALIGN (0x4)
                 [!provide]                        PROVIDE (__init_array_start = .)
  *(SORT_BY_NAME(.init_array.*))
  *(.init_array*)
                 [!provide]                        PROVIDE (__init_array_end = .)
-                0x000000000800086c                . = ALIGN (0x4)
+                0x000000000800093c                . = ALIGN (0x4)
 
-.fini_array     0x000000000800086c        0x0
-                0x000000000800086c                . = ALIGN (0x4)
+.fini_array     0x000000000800093c        0x0
+                0x000000000800093c                . = ALIGN (0x4)
                 [!provide]                        PROVIDE (__fini_array_start = .)
  *(SORT_BY_NAME(.fini_array.*))
  *(.fini_array*)
                 [!provide]                        PROVIDE (__fini_array_end = .)
-                0x000000000800086c                . = ALIGN (0x4)
-                0x000000000800086c                _sidata = LOADADDR (.data)
+                0x000000000800093c                . = ALIGN (0x4)
+                0x000000000800093c                _sidata = LOADADDR (.data)
 
-.data           0x0000000020000000      0x430 load address 0x000000000800086c
+.data           0x0000000020000000      0x430 load address 0x000000000800093c
                 0x0000000020000000                . = ALIGN (0x4)
                 0x0000000020000000                _sdata = .
  *(.data)
@@ -238,6 +244,7 @@ LOAD lib/syscall.o
  .data          0x0000000020000000        0x0 lib/gpio.o
  .data          0x0000000020000000        0x0 src/main.o
  .data          0x0000000020000000        0x0 lib/systick.o
+ .data          0x0000000020000000        0x0 src/drivers/log_info.o
  .data          0x0000000020000000        0x0 src/drivers/dht.o
  .data          0x0000000020000000        0x0 lib/uart.o
  .data          0x0000000020000000        0x0 Startup/startup.o
@@ -256,11 +263,11 @@ LOAD lib/syscall.o
                 0x0000000020000430                . = ALIGN (0x4)
                 0x0000000020000430                _edata = .
 
-.igot.plt       0x0000000020000430        0x0 load address 0x0000000008000c9c
+.igot.plt       0x0000000020000430        0x0 load address 0x0000000008000d6c
  .igot.plt      0x0000000020000430        0x0 src/main.o
                 0x0000000020000430                . = ALIGN (0x4)
 
-.bss            0x0000000020000430        0x8 load address 0x0000000008000c9c
+.bss            0x0000000020000430        0x8 load address 0x0000000008000d6c
                 0x0000000020000430                _sbss = .
                 0x0000000020000430                __bss_start__ = _sbss
  *(.bss)
@@ -268,6 +275,7 @@ LOAD lib/syscall.o
  .bss           0x0000000020000430        0x0 lib/gpio.o
  .bss           0x0000000020000430        0x0 src/main.o
  .bss           0x0000000020000430        0x0 lib/systick.o
+ .bss           0x0000000020000430        0x0 src/drivers/log_info.o
  .bss           0x0000000020000430        0x0 src/drivers/dht.o
  .bss           0x0000000020000430        0x0 lib/uart.o
  .bss           0x0000000020000430        0x0 Startup/startup.o
@@ -282,7 +290,7 @@ LOAD lib/syscall.o
                 0x0000000020000438                __bss_end__ = _ebss
 
 ._user_heap_stack
-                0x0000000020000438      0x600 load address 0x0000000008000c9c
+                0x0000000020000438      0x600 load address 0x0000000008000d6c
                 0x0000000020000438                . = ALIGN (0x8)
                 0x0000000020000438                PROVIDE (end = .)
                 [!provide]                        PROVIDE (_end = .)
@@ -309,13 +317,15 @@ LOAD lib/syscall.o
  .ARM.attributes
                 0x0000000000000087       0x2d lib/systick.o
  .ARM.attributes
-                0x00000000000000b4       0x2d src/drivers/dht.o
+                0x00000000000000b4       0x2d src/drivers/log_info.o
  .ARM.attributes
-                0x00000000000000e1       0x2d lib/uart.o
+                0x00000000000000e1       0x2d src/drivers/dht.o
  .ARM.attributes
-                0x000000000000010e       0x2d Startup/startup.o
+                0x000000000000010e       0x2d lib/uart.o
  .ARM.attributes
-                0x000000000000013b       0x2d lib/syscall.o
+                0x000000000000013b       0x2d Startup/startup.o
+ .ARM.attributes
+                0x0000000000000168       0x2d lib/syscall.o
 OUTPUT(firmware.elf elf32-littlearm)
 LOAD linker stubs
 LOAD /home/ynghia/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/libc.a
@@ -328,6 +338,7 @@ LOAD /home/ynghia/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-
  .comment       0x0000000000000049       0x4a lib/gpio.o
  .comment       0x0000000000000049       0x4a src/main.o
  .comment       0x0000000000000049       0x4a lib/systick.o
+ .comment       0x0000000000000049       0x4a src/drivers/log_info.o
  .comment       0x0000000000000049       0x4a src/drivers/dht.o
  .comment       0x0000000000000049       0x4a lib/uart.o
  .comment       0x0000000000000049       0x4a Startup/startup.o

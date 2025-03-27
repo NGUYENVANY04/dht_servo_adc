@@ -10,7 +10,7 @@ PRO_DRI := drivers
 PROJ_NAME := TEST 
 OUTPUT_PATH := $(PRO_DIR)
 
-all : start_up.o main.o rcc.o gpio.o uart.o dht.o systick.o syscall.o firmware.elf firmware.bin 
+all : start_up.o main.o rcc.o gpio.o log_info.o uart.o dht.o systick.o syscall.o firmware.elf firmware.bin flash 
 	
 main.o: $(strip $(PRO_SRC))/main.c
 	$(CC) -c $(CFLAGS) $(strip $(PRO_SRC))/main.c -o  $(strip $(PRO_SRC))/main.o
@@ -29,6 +29,9 @@ systick.o: $(strip $(PRO_LIB))/systick.c  $(strip $(PRO_LIB))/systick.h
 dht.o:  $(strip $(PRO_SRC)/$(PRO_DRI))/dht.c  $(strip $(PRO_SRC)/$(PRO_DRI))/dht.h
 	$(CC) -c $(CFLAGS) $(strip $(PRO_SRC)/$(PRO_DRI))/dht.c  -o \
         $(strip $(PRO_SRC)/$(PRO_DRI))/dht.o    
+log_info.o:  $(strip $(PRO_SRC)/$(PRO_DRI))/log_info.c  $(strip $(PRO_SRC)/$(PRO_DRI))/log_info.h
+	$(CC) -c $(CFLAGS) $(strip $(PRO_SRC)/$(PRO_DRI))/log_info.c  -o \
+        $(strip $(PRO_SRC)/$(PRO_DRI))/log_info.o   
 syscall.o:$(strip $(PRO_LIB))/syscall.c  
 	$(CC) -c $(CFLAGS) $(strip $(PRO_LIB))/syscall.c -o \
 	$(strip $(PRO_LIB))/syscall.o
@@ -42,6 +45,7 @@ firmware.elf: start_up.o main.o rcc.o gpio.o syscall.o uart.o systick.o linker.l
 	$(strip $(PRO_LIB))/gpio.o \
 	$(strip $(PRO_SRC))/main.o  \
 	$(strip $(PRO_LIB))/systick.o \
+	$(strip $(PRO_SRC)/$(PRO_DRI))/log_info.o \
 	$(strip $(PRO_SRC)/$(PRO_DRI))/dht.o \
 	$(strip $(PRO_LIB))/uart.o \
 	Startup/startup.o $(strip $(PRO_LIB))/syscall.o -o firmware.elf

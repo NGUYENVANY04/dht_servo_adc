@@ -102,6 +102,7 @@ USART_t	lib/uart.h	/^} USART_t;$/;"	t	typeref:struct:__anon9
 WRITE_REG	lib/gpio.h	14;"	d
 _DHT_H_	src/drivers/dht.h	2;"	d
 _GPIO_H_	lib/gpio.h	6;"	d
+_LOG_INFO_H_	src/drivers/log_info.h	2;"	d
 _RCC_H_	lib/rcc.h	2;"	d
 _SYSTICK_H_	lib/systick.h	2;"	d
 _UART_H_	lib/uart.h	2;"	d
@@ -132,18 +133,22 @@ environ	lib/syscall.c	/^char **environ = __env;$/;"	v
 gpio_get_level	lib/gpio.c	/^bool gpio_get_level(GPIO_Config_t *config)$/;"	f
 gpio_set_level	lib/gpio.c	/^void gpio_set_level(GPIO_Config_t *config, bool level)$/;"	f
 gpio_toggle_level	lib/gpio.c	/^void gpio_toggle_level(GPIO_Config_t *config) { config->port->ODR ^= (config->pin); }$/;"	f
+init_pin_dht	src/drivers/gpio_config.c	/^void init_pin_dht(void)$/;"	f
+init_pin_dht	src/drivers/gpio_config.h	/^void init_pin_dht(void) { GPIO_Config_t dht_pin = {}; }$/;"	f
 init_uart	lib/uart.c	/^void init_uart(void)$/;"	f
 initialise_monitor_handles	lib/syscall.c	/^void initialise_monitor_handles()$/;"	f
 inputType	lib/gpio.h	/^        GPIO_InputType_t inputType;$/;"	m	union:__anon7::__anon8
+log_info	src/drivers/log_info.c	/^void log_info(void *data)$/;"	f
 main	src/main.c	/^int main()$/;"	f
 main	src/test/main.c	/^int main()$/;"	f
 mode	lib/gpio.h	/^    GPIO_MODE_t mode;$/;"	m	struct:__anon7
 outputType	lib/gpio.h	/^        GPIO_OutputType_t outputType;$/;"	m	union:__anon7::__anon8
 pin	lib/gpio.h	/^    uint16_t pin;$/;"	m	struct:__anon7
 port	lib/gpio.h	/^    GPIO_REGISTER_t *port;$/;"	m	struct:__anon7
-read_signal	src/drivers/dht.c	/^uint8_t read_signal(GPIO_Config_t pin_config)$/;"	f
-sent_uart	lib/uart.c	/^void sent_uart(void)$/;"	f
-start_signal	src/drivers/dht.c	/^int start_signal(uint16_t pin)$/;"	f
+read_data	src/drivers/dht.c	/^uint8_t read_data(uint8_t pin)$/;"	f
+read_signal	src/drivers/dht.c	/^uint8_t read_signal(GPIO_Config_t *pin_config)$/;"	f
+sent_uart	lib/uart.c	/^void sent_uart(uint8_t data)$/;"	f
+start_signal	src/drivers/dht.c	/^int start_signal(GPIO_Config_t *pin_config)$/;"	f
 systick_t	lib/systick.h	/^} systick_t;$/;"	t	typeref:struct:__anon2
 tet	src/test/test.c	/^void tet() { printf("Hello"); }$/;"	f
 vectors	Startup/startup.c	/^uint32_t vectors[] __attribute__((section(".isr_vector"))) = {$/;"	v

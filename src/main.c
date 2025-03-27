@@ -1,5 +1,6 @@
 #include <stdint.h>
 #include <stdio.h>
+#include "drivers/log_info.h"
 #include "uart.h"
 #include "drivers/dht.h"
 #include "rcc.h"
@@ -26,21 +27,15 @@ int main()
     };
     GPIO_Config(&uart);
     SysTick_Init();
-    GPIO_Config_t pin_config = {
-        .pin = 1U << 13,
-        .port = GPIOC,
-    };
-    GPIO_Config(&pin_config);
-
-    // init_uart();
+    init_uart();
     while (1)
     {
 
-        start_signal(pin_config);
+        uint8_t data[5] = read_data(13);
+        log_info(data[0]);
+        delay_us(18);
+        log_info(data);
         delay_us(100000);
-        // read_data(13);
-        //  sent_uart(read_data(13));
-        // delay_us(2000);
     }
 }
 

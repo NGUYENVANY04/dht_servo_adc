@@ -11,10 +11,10 @@ void init_uart(void)
     USART1->USART_BRR = 0x341;
     USART1->USART_CR1 |= 1U << 3;
 }
-void sent_uart(uint8_t data)
+void sent_uart(void)
 {
 
-    USART1->USART_DR = data; // LOad the Data
+    USART1->USART_DR = 10; // LOad the Data
     while (!(USART1->USART_SR & (1 << 6)))
         ;
 }
