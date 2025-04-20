@@ -8,9 +8,9 @@ Set and cleared by software.
 */
 void enable_clock(void)
 {
-    RCC->RCC_APB2ENR |= (1 << 4);
-    RCC->RCC_APB2ENR |= (1 << 2);
-    RCC->RCC_CFGR |= 5 << 24; // get clock by MCO bit
+    RCC->RCC_APB2ENR |= (1 << 4); // enable  clock port C
+    RCC->RCC_APB2ENR |= (1 << 2); // enable clock port A
+    RCC->RCC_CFGR |= 5 << 24; // get clock by MCO bit debug
 }
 void enable_clock_source(void)
 {
@@ -26,6 +26,7 @@ void enable_clock_source(void)
     RCC->RCC_CFGR |= 1U << 16;
     RCC->RCC_CFGR |= 0b1010 << 18;
 }
-void enable_clock_uart1(void) { 
-    RCC->RCC_APB2ENR |= (1U << 14); 
+void enable_clock_uart1(void)
+{
+    RCC->RCC_APB2ENR |= (1U << 14); // enable clock USART1
 }

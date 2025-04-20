@@ -1,7 +1,10 @@
+#include <stdint.h>
 #include <stdio.h>
 
 int main()
 {
+    int e = 4294967295;
+    printf("%ld", e);
     unsigned char a = 200, b = 100;
     unsigned char c = a + b; // Lỗi do tràn số
     printf("%d\n", c);

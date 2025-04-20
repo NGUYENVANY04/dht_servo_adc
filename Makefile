@@ -10,7 +10,7 @@ PRO_DRI := drivers
 PROJ_NAME := TEST 
 OUTPUT_PATH := $(PRO_DIR)
 
-all : start_up.o main.o rcc.o gpio.o log_info.o uart.o dht.o systick.o syscall.o firmware.elf firmware.bin flash 
+all : adc.o start_up.o main.o rcc.o gpio.o gpio_config.o log_info.o uart.o dht.o systick.o syscall.o firmware.elf firmware.bin flash clear 
 	
 main.o: $(strip $(PRO_SRC))/main.c
 	$(CC) -c $(CFLAGS) $(strip $(PRO_SRC))/main.c -o  $(strip $(PRO_SRC))/main.o
@@ -26,12 +26,20 @@ uart.o: $(strip $(PRO_LIB))/uart.c  $(strip $(PRO_LIB))/uart.h
 systick.o: $(strip $(PRO_LIB))/systick.c  $(strip $(PRO_LIB))/systick.h
 	$(CC) -c $(CFLAGS) $(strip $(PRO_LIB))/systick.c -o \
 	$(strip $(PRO_LIB))/systick.o
+adc.o:  $(strip $(PRO_LIB))/adc.c  $(strip $(PRO_LIB))/adc.h
+	$(CC) -c $(CFLAGS) $(strip $(PRO_LIB))/adc.c -o  $(strip $(PRO_LIB))/adc.o
+
+
 dht.o:  $(strip $(PRO_SRC)/$(PRO_DRI))/dht.c  $(strip $(PRO_SRC)/$(PRO_DRI))/dht.h
 	$(CC) -c $(CFLAGS) $(strip $(PRO_SRC)/$(PRO_DRI))/dht.c  -o \
         $(strip $(PRO_SRC)/$(PRO_DRI))/dht.o    
 log_info.o:  $(strip $(PRO_SRC)/$(PRO_DRI))/log_info.c  $(strip $(PRO_SRC)/$(PRO_DRI))/log_info.h
 	$(CC) -c $(CFLAGS) $(strip $(PRO_SRC)/$(PRO_DRI))/log_info.c  -o \
-        $(strip $(PRO_SRC)/$(PRO_DRI))/log_info.o   
+        $(strip $(PRO_SRC)/$(PRO_DRI))/log_info.o 
+gpio_config.o :  $(strip $(PRO_SRC)/$(PRO_DRI))/gpio_config.c  $(strip $(PRO_SRC)/$(PRO_DRI))/gpio_config.h
+	$(CC) -c $(CFLAGS) $(strip $(PRO_SRC)/$(PRO_DRI))/gpio_config.c  -o \
+        $(strip $(PRO_SRC)/$(PRO_DRI))/gpio_config.o 
+	
 syscall.o:$(strip $(PRO_LIB))/syscall.c  
 	$(CC) -c $(CFLAGS) $(strip $(PRO_LIB))/syscall.c -o \
 	$(strip $(PRO_LIB))/syscall.o
@@ -39,12 +47,14 @@ syscall.o:$(strip $(PRO_LIB))/syscall.c
 start_up.o: Startup/startup.c
 	$(CC)  -c $(CFLAGS) Startup/startup.c -o  Startup/startup.o
 	
-firmware.elf: start_up.o main.o rcc.o gpio.o syscall.o uart.o systick.o linker.ld 
+firmware.elf: start_up.o main.o rcc.o adc.o gpio.o syscall.o uart.o gpio_config.o systick.o linker.ld 
 	$(CC) -nostdlib -T linker.ld -Wl,-Map=final.map \
 	$(strip $(PRO_LIB))/rcc.o \
 	$(strip $(PRO_LIB))/gpio.o \
 	$(strip $(PRO_SRC))/main.o  \
+	$(strip $(PRO_LIB))/adc.o  \
 	$(strip $(PRO_LIB))/systick.o \
+	$(strip $(PRO_SRC)/$(PRO_DRI))/gpio_config.o \
 	$(strip $(PRO_SRC)/$(PRO_DRI))/log_info.o \
 	$(strip $(PRO_SRC)/$(PRO_DRI))/dht.o \
 	$(strip $(PRO_LIB))/uart.o \
@@ -56,4 +66,4 @@ flash: firmware.bin
 	st-flash --reset write firmware.bin 0x8000000
 
 clear:
-	rm -rf Startup/startup.o src/main.o lib/rcc.o lib/gpio.o lib/systick.o firmware.bin firmware.elf 
+	rm -rf Startup/startup.o src/main.o lib/rcc.o lib/gpio.o lib/uart.o lib/systick.o firmware.bin firmware.elf 

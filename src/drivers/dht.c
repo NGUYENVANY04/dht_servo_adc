@@ -74,11 +74,6 @@ uint8_t read_data(uint8_t pin)
     data[2] = read_signal(&pin_config);
     data[3] = read_signal(&pin_config);
     data[4] = read_signal(&pin_config);
-
-    if (data[4] != data[0] + data[1] + data[2] + data[3])
-    {
-        return 1;
-    }
-    return data[2];
+        return data[2];
 }
 

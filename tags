@@ -4,18 +4,45 @@
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+ADC1	lib/adc.h	33;"	d
+ADC1_ADRESS	lib/adc.h	6;"	d
+ADC2	lib/adc.h	34;"	d
+ADC2_ADRESS	lib/adc.h	7;"	d
+ADC_CR1	lib/adc.h	/^    volatile uint32_t ADC_CR1;$/;"	m	struct:__anon3
+ADC_CR2	lib/adc.h	/^    volatile uint32_t ADC_CR2;$/;"	m	struct:__anon3
+ADC_DR	lib/adc.h	/^    volatile uint32_t ADC_DR;$/;"	m	struct:__anon3
+ADC_HTR	lib/adc.h	/^    volatile uint32_t ADC_HTR;$/;"	m	struct:__anon3
+ADC_JDR1	lib/adc.h	/^    volatile uint32_t ADC_JDR1;$/;"	m	struct:__anon3
+ADC_JDR2	lib/adc.h	/^    volatile uint32_t ADC_JDR2;$/;"	m	struct:__anon3
+ADC_JDR3	lib/adc.h	/^    volatile uint32_t ADC_JDR3;$/;"	m	struct:__anon3
+ADC_JDR4	lib/adc.h	/^    volatile uint32_t ADC_JDR4;$/;"	m	struct:__anon3
+ADC_JOFR1	lib/adc.h	/^    volatile uint32_t ADC_JOFR1;$/;"	m	struct:__anon3
+ADC_JOFR2	lib/adc.h	/^    volatile uint32_t ADC_JOFR2;$/;"	m	struct:__anon3
+ADC_JOFR3	lib/adc.h	/^    volatile uint32_t ADC_JOFR3;$/;"	m	struct:__anon3
+ADC_JOFR4	lib/adc.h	/^    volatile uint32_t ADC_JOFR4;$/;"	m	struct:__anon3
+ADC_JSQR	lib/adc.h	/^    volatile uint32_t ADC_JSQR;$/;"	m	struct:__anon3
+ADC_LTR	lib/adc.h	/^    volatile uint32_t ADC_LTR;$/;"	m	struct:__anon3
+ADC_SMPR1	lib/adc.h	/^    volatile uint32_t ADC_SMPR1;$/;"	m	struct:__anon3
+ADC_SMPR2	lib/adc.h	/^    volatile uint32_t ADC_SMPR2;$/;"	m	struct:__anon3
+ADC_SQR1	lib/adc.h	/^    volatile uint32_t ADC_SQR1;$/;"	m	struct:__anon3
+ADC_SQR2	lib/adc.h	/^    volatile uint32_t ADC_SQR2;$/;"	m	struct:__anon3
+ADC_SQR3	lib/adc.h	/^    volatile uint32_t ADC_SQR3;$/;"	m	struct:__anon3
+ADC_SR	lib/adc.h	/^    volatile uint32_t ADC_SR;$/;"	m	struct:__anon3
+ADC_t	lib/adc.h	/^} ADC_t;$/;"	t	typeref:struct:__anon3
 ADRESS_BASE_RCC	lib/rcc.h	4;"	d
-BRR	lib/gpio.h	/^    volatile uint32_t BRR;$/;"	m	struct:__anon3
-BSRR	lib/gpio.h	/^    volatile uint32_t BSRR;$/;"	m	struct:__anon3
+BRR	lib/gpio.h	/^    volatile uint32_t BRR;$/;"	m	struct:__anon4
+BSRR	lib/gpio.h	/^    volatile uint32_t BSRR;$/;"	m	struct:__anon4
 CC	Makefile	/^CC=arm-none-eabi-gcc$/;"	m
 CFLAGS	Makefile	/^CFLAGS= -Ilib -mcpu=$(MACH) -mthumb -mfloat-abi=soft -Wall -O0$/;"	m
 CLEAR_BIT	lib/gpio.h	11;"	d
 CLEAR_REG	lib/gpio.h	13;"	d
-CRH	lib/gpio.h	/^    uint32_t CRH;$/;"	m	struct:__anon3
-CRL	lib/gpio.h	/^    uint32_t CRL;$/;"	m	struct:__anon3
+CRH	lib/gpio.h	/^    uint32_t CRH;$/;"	m	struct:__anon4
+CRL	lib/gpio.h	/^    uint32_t CRL;$/;"	m	struct:__anon4
 Default_Handle	Startup/startup.c	/^void Default_Handle(void)$/;"	f
 GPIOA	lib/gpio.h	36;"	d
+GPIOA_BASE	src/main.c	11;"	d	file:
 GPIOA_BASE_ADDRESSS	lib/gpio.h	19;"	d
+GPIOA_CRL	src/main.c	16;"	d	file:
 GPIOB	lib/gpio.h	37;"	d
 GPIOB_BASE_ADDRESSS	lib/gpio.h	20;"	d
 GPIOC	lib/gpio.h	38;"	d
@@ -29,40 +56,46 @@ GPIOF_BASE_ADDRESSS	lib/gpio.h	24;"	d
 GPIOG	lib/gpio.h	42;"	d
 GPIOG_BASE_ADDRESSS	lib/gpio.h	25;"	d
 GPIO_Config	lib/gpio.c	/^void GPIO_Config(GPIO_Config_t *config)$/;"	f
-GPIO_Config_t	lib/gpio.h	/^} GPIO_Config_t;$/;"	t	typeref:struct:__anon7
-GPIO_INPUT_ANALOG	lib/gpio.h	/^    GPIO_INPUT_ANALOG = 0,$/;"	e	enum:__anon5
-GPIO_INPUT_FLOATING	lib/gpio.h	/^    GPIO_INPUT_FLOATING,$/;"	e	enum:__anon5
-GPIO_INPUT_PULL_UP_DOWN	lib/gpio.h	/^    GPIO_INPUT_PULL_UP_DOWN,$/;"	e	enum:__anon5
-GPIO_InputType_t	lib/gpio.h	/^} GPIO_InputType_t;$/;"	t	typeref:enum:__anon5
-GPIO_MODE_INPUT	lib/gpio.h	/^    GPIO_MODE_INPUT = 0,$/;"	e	enum:__anon4
-GPIO_MODE_OUTPUT_10MHz	lib/gpio.h	/^    GPIO_MODE_OUTPUT_10MHz = 1,$/;"	e	enum:__anon4
-GPIO_MODE_OUTPUT_2MHz	lib/gpio.h	/^    GPIO_MODE_OUTPUT_2MHz,$/;"	e	enum:__anon4
-GPIO_MODE_OUTPUT_50MHz	lib/gpio.h	/^    GPIO_MODE_OUTPUT_50MHz,$/;"	e	enum:__anon4
-GPIO_MODE_t	lib/gpio.h	/^} GPIO_MODE_t;$/;"	t	typeref:enum:__anon4
-GPIO_OUTPUT_AF_OPEN_DRAIN	lib/gpio.h	/^    GPIO_OUTPUT_AF_OPEN_DRAIN,$/;"	e	enum:__anon6
-GPIO_OUTPUT_AF_PUSH_PULL	lib/gpio.h	/^    GPIO_OUTPUT_AF_PUSH_PULL,$/;"	e	enum:__anon6
-GPIO_OUTPUT_OPEN_DRAIN	lib/gpio.h	/^    GPIO_OUTPUT_OPEN_DRAIN,$/;"	e	enum:__anon6
-GPIO_OUTPUT_PUSH_PULL	lib/gpio.h	/^    GPIO_OUTPUT_PUSH_PULL = 0,$/;"	e	enum:__anon6
-GPIO_OutputType_t	lib/gpio.h	/^} GPIO_OutputType_t;$/;"	t	typeref:enum:__anon6
-GPIO_REGISTER_t	lib/gpio.h	/^} GPIO_REGISTER_t;$/;"	t	typeref:struct:__anon3
-IDR	lib/gpio.h	/^    volatile uint32_t IDR;$/;"	m	struct:__anon3
-LCKR	lib/gpio.h	/^    volatile uint32_t LCKR;$/;"	m	struct:__anon3
+GPIO_Config_t	lib/gpio.h	/^} GPIO_Config_t;$/;"	t	typeref:struct:__anon8
+GPIO_INPUT_ANALOG	lib/gpio.h	/^    GPIO_INPUT_ANALOG = 0,$/;"	e	enum:__anon6
+GPIO_INPUT_FLOATING	lib/gpio.h	/^    GPIO_INPUT_FLOATING,$/;"	e	enum:__anon6
+GPIO_INPUT_PULL_UP_DOWN	lib/gpio.h	/^    GPIO_INPUT_PULL_UP_DOWN,$/;"	e	enum:__anon6
+GPIO_Init	src/main.c	/^void GPIO_Init(void)$/;"	f
+GPIO_InputType_t	lib/gpio.h	/^} GPIO_InputType_t;$/;"	t	typeref:enum:__anon6
+GPIO_MODE_INPUT	lib/gpio.h	/^    GPIO_MODE_INPUT = 0,$/;"	e	enum:__anon5
+GPIO_MODE_OUTPUT_10MHz	lib/gpio.h	/^    GPIO_MODE_OUTPUT_10MHz = 1,$/;"	e	enum:__anon5
+GPIO_MODE_OUTPUT_2MHz	lib/gpio.h	/^    GPIO_MODE_OUTPUT_2MHz,$/;"	e	enum:__anon5
+GPIO_MODE_OUTPUT_50MHz	lib/gpio.h	/^    GPIO_MODE_OUTPUT_50MHz,$/;"	e	enum:__anon5
+GPIO_MODE_t	lib/gpio.h	/^} GPIO_MODE_t;$/;"	t	typeref:enum:__anon5
+GPIO_OUTPUT_AF_OPEN_DRAIN	lib/gpio.h	/^    GPIO_OUTPUT_AF_OPEN_DRAIN,$/;"	e	enum:__anon7
+GPIO_OUTPUT_AF_PUSH_PULL	lib/gpio.h	/^    GPIO_OUTPUT_AF_PUSH_PULL,$/;"	e	enum:__anon7
+GPIO_OUTPUT_OPEN_DRAIN	lib/gpio.h	/^    GPIO_OUTPUT_OPEN_DRAIN,$/;"	e	enum:__anon7
+GPIO_OUTPUT_PUSH_PULL	lib/gpio.h	/^    GPIO_OUTPUT_PUSH_PULL = 0,$/;"	e	enum:__anon7
+GPIO_OutputType_t	lib/gpio.h	/^} GPIO_OutputType_t;$/;"	t	typeref:enum:__anon7
+GPIO_REGISTER_t	lib/gpio.h	/^} GPIO_REGISTER_t;$/;"	t	typeref:struct:__anon4
+IDR	lib/gpio.h	/^    volatile uint32_t IDR;$/;"	m	struct:__anon4
+LCKR	lib/gpio.h	/^    volatile uint32_t LCKR;$/;"	m	struct:__anon4
 LDFLAGS	Makefile	/^LDFLAGS= -mcpu=$(MACH) -mthumb -mfloat-abi=soft --specs=nano.specs -T linker.ld -Wl,-Map=final.map$/;"	m
 LDFLAGS_SH	Makefile	/^LDFLAGS_SH= -mcpu=$(MACH) -mthumb -mfloat-abi=soft --specs=rdimon.specs -T linker.ld -Wl,-Map=final.map$/;"	m
 MACH	Makefile	/^MACH=cortex-m3$/;"	m
 MODIFY_REG	lib/gpio.h	16;"	d
-ODR	lib/gpio.h	/^    volatile uint32_t ODR;$/;"	m	struct:__anon3
+ODR	lib/gpio.h	/^    volatile uint32_t ODR;$/;"	m	struct:__anon4
 OUTPUT_PATH	Makefile	/^OUTPUT_PATH := $(PRO_DIR)$/;"	m
 PROJ_NAME	Makefile	/^PROJ_NAME := TEST $/;"	m
 PRO_DRI	Makefile	/^PRO_DRI := drivers$/;"	m
 PRO_LIB	Makefile	/^PRO_LIB := lib $/;"	m
 PRO_SRC	Makefile	/^PRO_SRC := src$/;"	m
+PWM_Disable	src/main.c	/^void PWM_Disable(void) { TIM2_CCER &= ~(1 << 0); }$/;"	f
+PWM_Enable	src/main.c	/^void PWM_Enable(void) { TIM2_CCER |= (1 << 0); }$/;"	f
 RCC	lib/rcc.h	18;"	d
 RCC_AHBENR	lib/rcc.h	/^    volatile uint32_t RCC_AHBENR;$/;"	m	struct:__anon1
 RCC_APB1ENR	lib/rcc.h	/^    volatile uint32_t RCC_APB1ENR;$/;"	m	struct:__anon1
+RCC_APB1ENR	src/main.c	15;"	d	file:
 RCC_APB1RSTR	lib/rcc.h	/^    volatile uint32_t RCC_APB1RSTR;$/;"	m	struct:__anon1
 RCC_APB2ENR	lib/rcc.h	/^    volatile uint32_t RCC_APB2ENR;$/;"	m	struct:__anon1
+RCC_APB2ENR	src/main.c	14;"	d	file:
 RCC_APB2RSTR	lib/rcc.h	/^    volatile uint32_t RCC_APB2RSTR;$/;"	m	struct:__anon1
+RCC_BASE	src/main.c	10;"	d	file:
 RCC_BDCR	lib/rcc.h	/^    volatile uint32_t RCC_BDCR;$/;"	m	struct:__anon1
 RCC_CFGR	lib/rcc.h	/^    volatile uint32_t RCC_CFGR;$/;"	m	struct:__anon1
 RCC_CIR	lib/rcc.h	/^    volatile uint32_t RCC_CIR;$/;"	m	struct:__anon1
@@ -72,6 +105,9 @@ RCC_REGISTER_t	lib/rcc.h	/^} RCC_REGISTER_t;$/;"	t	typeref:struct:__anon1
 READ_BIT	lib/gpio.h	12;"	d
 READ_REG	lib/gpio.h	15;"	d
 Reset_Handler	Startup/startup.c	/^void Reset_Handler(void)$/;"	f
+SERVO_MAX	src/main.c	26;"	d	file:
+SERVO_MID	src/main.c	25;"	d	file:
+SERVO_MIN	src/main.c	24;"	d	file:
 SET_BIT	lib/gpio.h	10;"	d
 SRAM_END	Startup/startup.c	5;"	d	file:
 SRAM_SIZE	Startup/startup.c	4;"	d	file:
@@ -85,22 +121,32 @@ SYST_CVR	lib/systick.h	/^    volatile uint32_t SYST_CVR;$/;"	m	struct:__anon2
 SYST_RVR	lib/systick.h	/^    volatile uint32_t SYST_RVR;$/;"	m	struct:__anon2
 SysTick_Init	lib/systick.c	/^void SysTick_Init(void)$/;"	f
 TEST_C	src/test/test.c	2;"	d	file:
+TIM2_ARR	src/main.c	18;"	d	file:
+TIM2_BASE	src/main.c	12;"	d	file:
+TIM2_CCER	src/main.c	21;"	d	file:
+TIM2_CCMR1	src/main.c	20;"	d	file:
+TIM2_CCR1	src/main.c	19;"	d	file:
+TIM2_CR1	src/main.c	22;"	d	file:
+TIM2_PSC	src/main.c	17;"	d	file:
+Timer2_Init	src/main.c	/^void Timer2_Init(void)$/;"	f
 USART1	lib/uart.h	14;"	d
 USART1_ADDRESS	lib/uart.h	5;"	d
 USART2	lib/uart.h	15;"	d
 USART2_ADDRESS	lib/uart.h	6;"	d
 USART3	lib/uart.h	16;"	d
 USART3_ADDRESS	lib/uart.h	7;"	d
-USART_BRR	lib/uart.h	/^    volatile uint32_t USART_SR, USART_DR, USART_BRR, USART_CR1, USART_CR2, USART_CR3, USART_GTPR;$/;"	m	struct:__anon9
-USART_CR1	lib/uart.h	/^    volatile uint32_t USART_SR, USART_DR, USART_BRR, USART_CR1, USART_CR2, USART_CR3, USART_GTPR;$/;"	m	struct:__anon9
-USART_CR2	lib/uart.h	/^    volatile uint32_t USART_SR, USART_DR, USART_BRR, USART_CR1, USART_CR2, USART_CR3, USART_GTPR;$/;"	m	struct:__anon9
-USART_CR3	lib/uart.h	/^    volatile uint32_t USART_SR, USART_DR, USART_BRR, USART_CR1, USART_CR2, USART_CR3, USART_GTPR;$/;"	m	struct:__anon9
-USART_DR	lib/uart.h	/^    volatile uint32_t USART_SR, USART_DR, USART_BRR, USART_CR1, USART_CR2, USART_CR3, USART_GTPR;$/;"	m	struct:__anon9
-USART_GTPR	lib/uart.h	/^    volatile uint32_t USART_SR, USART_DR, USART_BRR, USART_CR1, USART_CR2, USART_CR3, USART_GTPR;$/;"	m	struct:__anon9
-USART_SR	lib/uart.h	/^    volatile uint32_t USART_SR, USART_DR, USART_BRR, USART_CR1, USART_CR2, USART_CR3, USART_GTPR;$/;"	m	struct:__anon9
-USART_t	lib/uart.h	/^} USART_t;$/;"	t	typeref:struct:__anon9
+USART_BRR	lib/uart.h	/^    volatile uint32_t USART_SR, USART_DR, USART_BRR, USART_CR1, USART_CR2, USART_CR3, USART_GTPR;$/;"	m	struct:__anon10
+USART_CR1	lib/uart.h	/^    volatile uint32_t USART_SR, USART_DR, USART_BRR, USART_CR1, USART_CR2, USART_CR3, USART_GTPR;$/;"	m	struct:__anon10
+USART_CR2	lib/uart.h	/^    volatile uint32_t USART_SR, USART_DR, USART_BRR, USART_CR1, USART_CR2, USART_CR3, USART_GTPR;$/;"	m	struct:__anon10
+USART_CR3	lib/uart.h	/^    volatile uint32_t USART_SR, USART_DR, USART_BRR, USART_CR1, USART_CR2, USART_CR3, USART_GTPR;$/;"	m	struct:__anon10
+USART_DR	lib/uart.h	/^    volatile uint32_t USART_SR, USART_DR, USART_BRR, USART_CR1, USART_CR2, USART_CR3, USART_GTPR;$/;"	m	struct:__anon10
+USART_GTPR	lib/uart.h	/^    volatile uint32_t USART_SR, USART_DR, USART_BRR, USART_CR1, USART_CR2, USART_CR3, USART_GTPR;$/;"	m	struct:__anon10
+USART_SR	lib/uart.h	/^    volatile uint32_t USART_SR, USART_DR, USART_BRR, USART_CR1, USART_CR2, USART_CR3, USART_GTPR;$/;"	m	struct:__anon10
+USART_t	lib/uart.h	/^} USART_t;$/;"	t	typeref:struct:__anon10
 WRITE_REG	lib/gpio.h	14;"	d
+_ADC_H_	lib/adc.h	2;"	d
 _DHT_H_	src/drivers/dht.h	2;"	d
+_GPIO_CONFIG_H_	src/drivers/gpio_config.h	2;"	d
 _GPIO_H_	lib/gpio.h	6;"	d
 _LOG_INFO_H_	src/drivers/log_info.h	2;"	d
 _RCC_H_	lib/rcc.h	2;"	d
@@ -128,26 +174,30 @@ _write	lib/syscall.c	/^__attribute__((weak)) int _write(int file, char *ptr, int
 delay_us	lib/systick.c	/^void delay_us(uint32_t us)$/;"	f
 enable_clock	lib/rcc.c	/^void enable_clock(void)$/;"	f
 enable_clock_source	lib/rcc.c	/^void enable_clock_source(void)$/;"	f
-enable_clock_uart1	lib/rcc.c	/^void enable_clock_uart1(void) { $/;"	f
+enable_clock_uart1	lib/rcc.c	/^void enable_clock_uart1(void)$/;"	f
 environ	lib/syscall.c	/^char **environ = __env;$/;"	v
+get_temperature	src/main.c	/^float get_temperature(void)$/;"	f
 gpio_get_level	lib/gpio.c	/^bool gpio_get_level(GPIO_Config_t *config)$/;"	f
 gpio_set_level	lib/gpio.c	/^void gpio_set_level(GPIO_Config_t *config, bool level)$/;"	f
 gpio_toggle_level	lib/gpio.c	/^void gpio_toggle_level(GPIO_Config_t *config) { config->port->ODR ^= (config->pin); }$/;"	f
-init_pin_dht	src/drivers/gpio_config.c	/^void init_pin_dht(void)$/;"	f
-init_pin_dht	src/drivers/gpio_config.h	/^void init_pin_dht(void) { GPIO_Config_t dht_pin = {}; }$/;"	f
+init_adc	lib/adc.c	/^void init_adc(void)$/;"	f
+init_pin_log_info	src/drivers/gpio_config.c	/^void init_pin_log_info(void)$/;"	f
 init_uart	lib/uart.c	/^void init_uart(void)$/;"	f
 initialise_monitor_handles	lib/syscall.c	/^void initialise_monitor_handles()$/;"	f
-inputType	lib/gpio.h	/^        GPIO_InputType_t inputType;$/;"	m	union:__anon7::__anon8
-log_info	src/drivers/log_info.c	/^void log_info(void *data)$/;"	f
-main	src/main.c	/^int main()$/;"	f
+inputType	lib/gpio.h	/^        GPIO_InputType_t inputType;$/;"	m	union:__anon8::__anon9
+log_info	src/drivers/log_info.c	/^void log_info(int data)$/;"	f
+main	src/main.c	/^int main(void)$/;"	f
 main	src/test/main.c	/^int main()$/;"	f
-mode	lib/gpio.h	/^    GPIO_MODE_t mode;$/;"	m	struct:__anon7
-outputType	lib/gpio.h	/^        GPIO_OutputType_t outputType;$/;"	m	union:__anon7::__anon8
-pin	lib/gpio.h	/^    uint16_t pin;$/;"	m	struct:__anon7
-port	lib/gpio.h	/^    GPIO_REGISTER_t *port;$/;"	m	struct:__anon7
+mode	lib/gpio.h	/^    GPIO_MODE_t mode;$/;"	m	struct:__anon8
+outputType	lib/gpio.h	/^        GPIO_OutputType_t outputType;$/;"	m	union:__anon8::__anon9
+pin	lib/gpio.h	/^    uint16_t pin;$/;"	m	struct:__anon8
+port	lib/gpio.h	/^    GPIO_REGISTER_t *port;$/;"	m	struct:__anon8
+read_adc_value	src/main.c	/^uint16_t read_adc_value(void)$/;"	f
 read_data	src/drivers/dht.c	/^uint8_t read_data(uint8_t pin)$/;"	f
 read_signal	src/drivers/dht.c	/^uint8_t read_signal(GPIO_Config_t *pin_config)$/;"	f
-sent_uart	lib/uart.c	/^void sent_uart(uint8_t data)$/;"	f
+sent_uart	lib/uart.c	/^void sent_uart(void)$/;"	f
+set_servo_angle	src/main.c	/^void set_servo_angle(uint16_t value) { TIM2_CCR1 = value; }$/;"	f
+start_adc	lib/adc.c	/^void start_adc(void)$/;"	f
 start_signal	src/drivers/dht.c	/^int start_signal(GPIO_Config_t *pin_config)$/;"	f
 systick_t	lib/systick.h	/^} systick_t;$/;"	t	typeref:struct:__anon2
 tet	src/test/test.c	/^void tet() { printf("Hello"); }$/;"	f
